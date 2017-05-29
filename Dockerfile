@@ -2,7 +2,8 @@ FROM ligo/ligo-base:stretch
 
 LABEL name="LALSuite Development Debian Stretch" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170528"
+      date="20170529" \
+      support="Best Effort"
 
 # FIXME: this should use the lscsoft-lalsuite-dev meta-package but
 # that is out of date on Debian and needs to be updated
