@@ -1,4 +1,4 @@
-FROM ligo/ligo-base:stretch
+FROM ligo/base:stretch
 
 LABEL name="LALSuite Development Debian Stretch" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
