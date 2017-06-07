@@ -2,7 +2,7 @@ FROM ligo/base:stretch
 
 LABEL name="LALSuite Development Debian Stretch" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170606" \
+      date="20170607" \
       support="Best Effort"
 
 # FIXME: this should use the lscsoft-lalsuite-dev meta-package but
@@ -14,6 +14,7 @@ RUN apt-get update && apt-get --assume-yes install autoconf \
       ccache \
       doxygen \
       git \
+      git-lfs \
       help2man \
       ldas-tools-framecpp-c-dev \
       libcfitsio-dev \
