@@ -2,16 +2,18 @@ FROM ligo/base:stretch
 
 LABEL name="LALSuite Development Debian Stretch" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170602" \
+      date="20170606" \
       support="Best Effort"
 
 # FIXME: this should use the lscsoft-lalsuite-dev meta-package but
 # that is out of date on Debian and needs to be updated
-RUN apt-get --assume-yes install autoconf \
+RUN apt-get update && apt-get --assume-yes install autoconf \
       automake \
       bc \
+      build-essential \
       ccache \
       doxygen \
+      git \
       help2man \
       ldas-tools-framecpp-c-dev \
       libcfitsio-dev \
