@@ -2,7 +2,7 @@ FROM ligo/base:stretch
 
 LABEL name="LALSuite Development - Debian Stretch" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170830" \
+      date="20171209" \
       support="Best Effort"
 
 # FIXME: this should use the lscsoft-lalsuite-dev meta-package but
@@ -48,3 +48,6 @@ RUN apt-get update && apt-get --assume-yes install autoconf \
       python3-six \
       swig3.0 \
       texlive
+
+# clear package cache
+RUN rm -rf /var/lib/apt/lists/*
