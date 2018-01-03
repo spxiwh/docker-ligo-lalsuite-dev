@@ -1,24 +1,12 @@
-FROM ligo/base:el7
+FROM ligo/lalsuite-dev:jessie
 
-LABEL name="LALSuite Development Enterprise Linux 7" \
-      maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20171212" \
-      support="Reference Platform"
-
-# install development tools and git from IUS
-RUN yum makecache && \
-      yum groups mark convert && \
-      yum -y groups install "Development Tools" && \
-      yum -y remove git && \
-      yum -y install git2u
+LABEL name="TESTING" \
+      maintainer="NONE" \
+      date = "20180101" \
+      support="NONE"
 
 # install lalsuite dependencies
-RUN yum -y install ccache \
-      glue \
-      lscsoft-lalsuite-dev
-
-# git-lfs post-install
-RUN git lfs install
+RUN yum -y install vim 
 
 # clear package cache
 RUN yum clean all
