@@ -1,4 +1,4 @@
-FROM ligo/lalsuite-dev:jessie
+FROM ligo/lalsuite-dev:el7
 
 LABEL name="TESTING" \
       maintainer="NONE" \
