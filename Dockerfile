@@ -1,49 +1,13 @@
-FROM ligo/base:jessie
+FROM ligo/lalsuite-dev:jessie
 
-LABEL name="LALSuite Development Debian Jessie" \
-      maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20171212" \
-      support="Reference Platform"
+LABEL name="TESTING" \
+      maintainer="Ian Harry <ian.harry@ligo.org>" \
+      date="20180103" \
+      support="NONE"
 
 # FIXME: this should use the lscsoft-lalsuite-dev meta-package but
 # that is out of date on Debian and needs to be updated
-RUN apt-get update && apt-get --assume-yes install autoconf \
-      automake \
-      bc \
-      build-essential \
-      ccache \
-      condor \
-      doxygen \
-      git \
-      git-lfs \
-      help2man \
-      ldas-tools-framecpp-c-dev \
-      libcfitsio-dev \
-      libchealpix-dev \
-      libfftw3-dev \
-      libframe-dev \
-      libglib2.0-dev \
-      libgsl0-dev \
-      libhdf5-dev \
-      libmetaio-dev \
-      liboctave-dev \
-      libopenmpi-dev \
-      libtool \
-      libxml2-dev \
-      pkg-config \
-      python-dev \
-      python-glue \
-      python-h5py \
-      python-healpy \
-      python-numpy \
-      python-scipy \
-      python-shapely \
-      python-six \
-      swig3.0 \
-      texlive
-
-# git-lfs post-install
-RUN git lfs install
+RUN apt-get update && apt-get --assume-yes install vim
 
 # clear package cache
 RUN rm -rf /var/lib/apt/lists/*
