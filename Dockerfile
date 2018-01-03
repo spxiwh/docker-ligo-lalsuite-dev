@@ -2,7 +2,7 @@ FROM ligo/lalsuite-dev:el7
 
 LABEL name="TESTING" \
       maintainer="NONE" \
-      date = "20180101" \
+      date="20180101" \
       support="NONE"
 
 # install lalsuite dependencies
