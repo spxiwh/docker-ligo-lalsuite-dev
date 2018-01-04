@@ -17,6 +17,7 @@ RUN SWIG_FEATURES="-cpperraswarn -includeall -I/usr/include/openssl" pip install
 RUN pip install http://download.pegasus.isi.edu/pegasus/4.7.3/pegasus-python-source-4.7.3.tar.gz
 RUN pip install dqsegdb
 RUN pip install ligo-gracedb
+RUN pip install --upgrade pyscaffold
 RUN mkdir -p /TEMP/pycbc && cd /TEMP/pycbc && git clone https://github.com/ligo-cbc/pycbc.git && cd pycbc && python setup.py install
 
 # clear package cache
