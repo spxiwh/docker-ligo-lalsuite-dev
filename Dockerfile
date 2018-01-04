@@ -5,6 +5,8 @@ LABEL name="TESTING" \
       date="20180103" \
       support="NONE"
 
+RUN apt-get update
+RUN apt-get upgrade
 RUN apt-get --assume-yes install python-setuptools python-dev build-essential
 RUN easy_install pip
 RUN pip install --upgrade virtualenv
