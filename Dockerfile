@@ -5,6 +5,9 @@ LABEL name="TESTING" \
       date="20180103" \
       support="NONE"
 
+RUN apt-get --assume-yes install python-setuptools python-dev build-essential
+RUN easy_install pip
+RUN pip install --upgrade virtualenv
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install "numpy>=1.6.4" unittest2 python-cjson Cython decorator
