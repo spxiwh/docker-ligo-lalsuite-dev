@@ -10,7 +10,7 @@ RUN apt-get --assume-yes update
 RUN apt-get --assume-yes upgrade
 RUN apt-get --assume-yes install vim
 RUN apt-get --assume-yes install python-setuptools python-dev build-essential
-RUN apt-get --assume-yes install openmpi
+RUN apt-get --assume-yes install openmpi-bin openmpi-doc libopenmpi-dev
 RUN easy_install pip
 RUN pip install --upgrade virtualenv
 RUN pip install --upgrade pip
