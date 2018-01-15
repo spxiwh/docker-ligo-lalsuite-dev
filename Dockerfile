@@ -25,6 +25,9 @@ RUN pip install --upgrade pyscaffold
 # Complete lalsuite install, can add a specific lalsuite tag here
 RUN mkdir -p /TEMP/lscsoft && cd /TEMP/lscsoft && git clone https://git.ligo.org/lscsoft/lalsuite.git && cd lalsuite && git checkout master  && ./00boot && ./configure --prefix=/usr --disable-lalstochastic --enable-mpi --enable-openmp && make install -j
 
+# Also need lalsuite extra
+RUN mkdir -p /TEMP/lscsoft_extra && cd /TEMP/lscsoft_extra && git clone https://git.ligo.org/lscsoft/lalsuite-extra.git && ./configure --prefix=/usr && make install
+
 # Complete pycbc install, add a git checkout HASH command if not wanting to install origin/master
 RUN mkdir -p /TEMP/pycbc && cd /TEMP/pycbc && git clone https://github.com/ligo-cbc/pycbc.git && cd pycbc && python setup.py install
 
