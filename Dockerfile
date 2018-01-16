@@ -9,6 +9,7 @@ LABEL name="TESTING" \
 RUN apt-get --assume-yes update
 RUN apt-get --assume-yes upgrade
 RUN apt-get --assume-yes install vim
+RUN apt-get --assume-yes install curl
 RUN apt-get --assume-yes install python-setuptools python-dev build-essential
 RUN apt-get --assume-yes install openmpi-bin openmpi-doc libopenmpi-dev
 RUN easy_install pip
@@ -26,7 +27,11 @@ RUN pip install -I pyscaffold==2.5.8
 RUN mkdir -p /TEMP/lscsoft && cd /TEMP/lscsoft && git clone https://git.ligo.org/lscsoft/lalsuite.git && cd lalsuite && git checkout master  && ./00boot && ./configure --prefix=/usr --disable-lalstochastic --enable-mpi --enable-openmp && make install -j
 
 # Also need lalsuite extra
-RUN mkdir -p /TEMP/lscsoft_extra && cd /TEMP/lscsoft_extra && git clone https://git.ligo.org/lscsoft/lalsuite-extra.git && ./configure --prefix=/usr && make install
+RUN mkdir -p /TEMP/lalsuite_extra && cd /TEMP/lalsuite_extra && curl http://software.ligo.org/lscsoft/source/lalsuite-extra-1.3.0.tar.gz > lalsuite-extra-1.3.0.tar.gz
+RUN cd /TEMP/lalsuite_extra && tar -zxvf lalsuite-extra-1.3.0.tar.gz && cd lalsuite-extra-1.3.0/data/lalsimulation && mkdir -p /usr/share/lalsimulation/ && cp * /usr/share/lalsimulation/
+
+# Put the ROQ data in a top-level directory
+RUN mkdir -p /ROQ_data && cd /ROQ_data && curl https://minerva.aei.mpg.de/~mpuer/ROQ/32s/bases_32s.tar > bases_32s.tar && tar -xvf bases_32s.tar && rm -f bases_32s.tar
 
 # Complete pycbc install, add a git checkout HASH command if not wanting to install origin/master
 RUN mkdir -p /TEMP/pycbc && cd /TEMP/pycbc && git clone https://github.com/ligo-cbc/pycbc.git && cd pycbc && python setup.py install
