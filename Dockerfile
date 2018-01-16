@@ -20,7 +20,7 @@ RUN SWIG_FEATURES="-cpperraswarn -includeall -I/usr/include/openssl" pip install
 RUN pip install http://download.pegasus.isi.edu/pegasus/4.7.3/pegasus-python-source-4.7.3.tar.gz
 RUN pip install dqsegdb
 RUN pip install ligo-gracedb
-RUN pip install --upgrade pyscaffold
+RUN pip install -I pyscaffold==2.5.8
 
 # Complete lalsuite install, can add a specific lalsuite tag here
 RUN mkdir -p /TEMP/lscsoft && cd /TEMP/lscsoft && git clone https://git.ligo.org/lscsoft/lalsuite.git && cd lalsuite && git checkout master  && ./00boot && ./configure --prefix=/usr --disable-lalstochastic --enable-mpi --enable-openmp && make install -j
