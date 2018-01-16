@@ -5,6 +5,7 @@ LABEL name="TESTING" \
       date="20180103" \
       support="NONE"
 
+RUN apt-get --assume-yes install curl
 RUN mkdir -p /TEMP/lalsuite_extra && cd /TEMP/lalsuite_extra && curl http://software.ligo.org/lscsoft/source/lalsuite-extra-1.3.0.tar.gz > lalsuite-extra-1.3.0.tar.gz
 RUN cd /TEMP/lalsuite_extra && tar -zxvf lalsuite-extra-1.3.0.tar.gz && cd lalsuite-extra-1.3.0/data/lalsimulation && mkdir -p /usr/share/lalsimulation/ && cp * /usr/share/lalsimulation/
 
