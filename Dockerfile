@@ -38,4 +38,4 @@ RUN mkdir -p /ROQ_data && cd /ROQ_data && curl https://minerva.aei.mpg.de/~mpuer
 RUN mkdir -p /TEMP/pycbc && cd /TEMP/pycbc && git clone https://github.com/ligo-cbc/pycbc.git && cd pycbc && python setup.py install
 
 # clear package cache and TEMP directories
-RUN rm -rf /var/lib/apt/lists/* /TEMP/lscsoft /TEMP/pycbc
+RUN rm -rf /var/lib/apt/lists/* /TEMP/lscsoft /TEMP/pycbc /TEMP/lalsuite_extra
