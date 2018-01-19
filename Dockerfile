@@ -33,4 +33,5 @@ RUN apt-get --assume-yes update \
 && mkdir -p /ROQ_data && cd /ROQ_data && curl https://minerva.aei.mpg.de/~mpuer/ROQ/32s/bases_32s.tar > bases_32s.tar \
 && tar -xvf bases_32s.tar && rm -f bases_32s.tar \
 && mkdir -p /TEMP/pycbc && cd /TEMP/pycbc && git clone https://github.com/ligo-cbc/pycbc.git && cd pycbc && python setup.py install \
-&& rm -rf /var/lib/apt/lists/* /TEMP/lscsoft /TEMP/pycbc /TEMP/lalsuite_extra
+&& mkdir -p /TEMP/pylal && cd /TEMP/pylal && git clone https://git.ligo.org/lscsoft/pylal.git && cd pylal && python setup.py install \
+&& rm -rf /var/lib/apt/lists/* /TEMP/
