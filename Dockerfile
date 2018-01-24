@@ -21,6 +21,7 @@ RUN apt-get --assume-yes update \
 && pip install http://download.pegasus.isi.edu/pegasus/4.7.3/pegasus-python-source-4.7.3.tar.gz \
 && pip install dqsegdb \
 && pip install ligo-gracedb \
+&& pip install mpi4py \
 && pip install -I pyscaffold==2.5.8 \
 && pip install -I astropy==2.0.3 \
 && mkdir -p /TEMP/lscsoft && cd /TEMP/lscsoft && git clone https://git.ligo.org/lscsoft/lalsuite.git \
@@ -30,7 +31,7 @@ RUN apt-get --assume-yes update \
 && curl http://software.ligo.org/lscsoft/source/lalsuite-extra-1.3.0.tar.gz > lalsuite-extra-1.3.0.tar.gz \
 && cd /TEMP/lalsuite_extra && tar -zxvf lalsuite-extra-1.3.0.tar.gz && cd lalsuite-extra-1.3.0/data/lalsimulation \
 && mkdir -p /usr/share/lalsimulation/ && cp * /usr/share/lalsimulation/ \
-&& mkdir -p /ROQ_data && cd /ROQ_data && curl https://minerva.aei.mpg.de/~mpuer/ROQ/32s/bases_32s.tar > bases_32s.tar \
+&& mkdir -p /ROQ_data/IMRPhenomPv2/32s && cd /ROQ_data/IMRPhenomPv2/32s && curl https://minerva.aei.mpg.de/~mpuer/ROQ/32s/bases_32s.tar > bases_32s.tar \
 && tar -xvf bases_32s.tar && rm -f bases_32s.tar \
 && mkdir -p /TEMP/pycbc && cd /TEMP/pycbc && git clone https://github.com/ligo-cbc/pycbc.git && cd pycbc && python setup.py install \
 && mkdir -p /TEMP/pylal && cd /TEMP/pylal && git clone https://git.ligo.org/lscsoft/pylal.git && cd pylal && python setup.py install \
