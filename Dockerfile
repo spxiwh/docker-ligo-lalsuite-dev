@@ -1,12 +1,61 @@
-FROM ligo/lalsuite-dev:jessie
+FROM debian:jessie
 
 LABEL name="TESTING" \
       maintainer="Ian Harry <ian.harry@ligo.org>" \
       date="20180103" \
       support="NONE"
 
-# Setup dependencies for lalsuite/PyCBC. Lalsuite is mostly in place but missing openmpi, PyCBC needs a bunch of stuff.
-RUN apt-get --assume-yes update \
+# ensure non-interactive debian installation
+ENV DEBIAN_FRONTEND noninteractive
+
+# We just copy ligo/base and ligo/lalsuite-dev into here for partability
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+&& apt-get update && apt-get --assume-yes install apt-transport-https
+&& echo "deb http://research.cs.wisc.edu/htcondor/debian/stable jessie contrib" > /etc/apt/sources.list.d/condor.list
+&& echo "deb http://software.ligo.org/gridtools/debian jessie main" > /etc/apt/sources.list.d/gridtools.list
+&& echo "deb http://software.ligo.org/lscsoft/debian jessie contrib" > /etc/apt/sources.list.d/lscsoft.list
+&& echo "deb https://packagecloud.io/github/git-lfs/debian jessie main" > /etc/apt/sources.list.d/git-lfs.list
+&& apt-key adv --keyserver pgp.mit.edu --recv-key 8325FECB83821E31D3582A69CE050D236DB6FA3F
+&& apt-key adv --keyserver pgp.mit.edu --recv-key 4B9D355DF3674E0E272D2E0A973FC7D2670079F6
+&& apt-key adv --keyserver pgp.mit.edu --recv-key 418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB
+&& apt-get update && apt-get --assume-yes install apt-utils bash-completion && rm -rf /var/lib/apt/lists/*
+&& apt-get update && apt-get --assume-yes install autoconf \
+      automake \
+      bc \
+      build-essential \
+      ccache \
+      condor \
+      doxygen \
+      git \
+      git-lfs \
+      help2man \
+      ldas-tools-framecpp-c-dev \
+      libcfitsio-dev \
+      libchealpix-dev \
+      libfftw3-dev \
+      libframe-dev \
+      libglib2.0-dev \
+      libgsl0-dev \
+      libhdf5-dev \
+      libmetaio-dev \
+      liboctave-dev \
+      libopenmpi-dev \
+      libtool \
+      libxml2-dev \
+      pkg-config \
+      python-dev \
+      python-glue \
+      python-h5py \
+      python-healpy \
+      python-numpy \
+      python-reproject \
+      python-scipy \
+      python-shapely \
+      python-six \
+      swig3.0 \
+      texlive
+&& git lfs install
+&& apt-get --assume-yes update \
 && apt-get --assume-yes upgrade \
 && apt-get --assume-yes install vim \
 && apt-get --assume-yes install curl \
