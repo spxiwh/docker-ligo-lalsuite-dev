@@ -15,11 +15,11 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 && rm -rf /var/lib/apt/lists/* \
 && echo "deb http://software.ligo.org/gridtools/debian stretch main" > /etc/apt/sources.list.d/gridtools.list \
 && echo "deb http://software.ligo.org/lscsoft/debian stretch contrib" > /etc/apt/sources.list.d/lscsoft.list \
-&& echo "deb https://packagecloud.io/github/git-lfs/debian stretch main" > /etc/apt/sources.list.d/git-lfs.list \
-&& apt-key adv --keyserver pgp.mit.edu --recv-key 8325FECB83821E31D3582A69CE050D236DB6FA3F \
+&& echo "deb https://packagecloud.io/github/git-lfs/debian stretch main" > /etc/apt/sources.list.d/git-lfs.list
+RUN apt-key adv --keyserver pgp.mit.edu --recv-key 8325FECB83821E31D3582A69CE050D236DB6FA3F \
 && apt-key adv --keyserver pgp.mit.edu --recv-key 4B9D355DF3674E0E272D2E0A973FC7D2670079F6 \
-&& apt-key adv --keyserver pgp.mit.edu --recv-key 418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB \
-&& apt-get update && apt-get --assume-yes install bash-completion && rm -rf /var/lib/apt/lists/* \
+&& apt-key adv --keyserver pgp.mit.edu --recv-key 418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB
+RUN apt-get update && apt-get --assume-yes install bash-completion && rm -rf /var/lib/apt/lists/* \
 && apt-get update && apt-get --assume-yes install autoconf \
       automake \
       bc \
