@@ -88,4 +88,5 @@ RUN apt-get update && apt-get --assume-yes install bash-completion && rm -rf /va
 && tar -xvf bases_32s.tar && rm -f bases_32s.tar \
 && mkdir -p /TEMP/pycbc && cd /TEMP/pycbc && git clone https://github.com/ligo-cbc/pycbc.git && cd pycbc && python setup.py install \
 && mkdir -p /TEMP/pylal && cd /TEMP/pylal && git clone https://git.ligo.org/lscsoft/pylal.git && cd pylal && python setup.py install \
+&& mkdir -p /TEMP/bench_scripts && cd /TEMP/bench_scripts && git clone https://github.com/spxiwh/benchmark_newvulcan.git && cp benchmark_newvulcan/run_all* /usr/bin
 && rm -rf /var/lib/apt/lists/* /TEMP/
