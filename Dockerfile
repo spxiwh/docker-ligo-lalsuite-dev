@@ -70,6 +70,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 && pip install http://download.pegasus.isi.edu/pegasus/4.7.3/pegasus-python-source-4.7.3.tar.gz \
 && pip install dqsegdb \
 && pip install ligo-gracedb \
+&& pip install ligo-segments \
 && pip install mpi4py \
 && pip install -I pyscaffold==2.5.8 \
 && pip install -I astropy==2.0.3 \
