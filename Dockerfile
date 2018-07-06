@@ -74,6 +74,7 @@ RUN apt-get update && apt-get --assume-yes install bash-completion && rm -rf /va
 && pip install "http://download.pegasus.isi.edu/pegasus/4.8.1/pegasus-python-source-4.8.1.tar.gz#egg=pegasus-wms-4.8.1" --no-deps \
 && pip install dqsegdb \
 && pip install ligo-gracedb \
+&& pip install ligo-segments \
 && pip install mpi4py \
 && pip install -I pyscaffold==2.5.8 \
 && pip install -I astropy==2.0.3 \
